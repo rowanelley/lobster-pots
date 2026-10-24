@@ -1,8 +1,8 @@
 import os, time
 
-def printLine(input, delay):
+def printLine(text, delay):
     time.sleep(delay)
-    print(input)
+    print(text)
 
 def printChars(text, delay):
     for char in text:
