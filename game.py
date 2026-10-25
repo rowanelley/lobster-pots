@@ -24,7 +24,7 @@ time.sleep(0.5)
 saveDir = os.listdir('saves')
 
 if len(saveDir) != 0:
-    mp.printChars("Current saves are:\n", 0.1)
+    mp.printChars("Saves:\n", 0.1)
     time.sleep(0.5)
     for i in range(len(saveDir)):
         mp.printChars(str(i+1) + ') ' + saveDir[i], 0.1)
@@ -33,7 +33,23 @@ if len(saveDir) != 0:
         time.sleep(0.5)
     print()
     time.sleep(0.5)
-    mp.printChars("Enter save number to load,\n", 0.1)
+    mp.printChars("Enter save number,\n", 0.1)
     time.sleep(0.5)
     mp.printChars("or type \"new\": ", 0.1)
-    input()
+    answer = input()
+    while True:
+        try:
+            int(answer)
+        except:
+            number = False
+        else:
+            number = True
+        if answer == 'new' or number == True:
+            break
+        answer = input("Try again: ")
+
+    if number == True:
+        f.loadSave(saveDir[number])
+    if answer == 'new':
+        f.newSave()
+
